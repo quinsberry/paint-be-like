@@ -3,7 +3,8 @@
 ## Description
 
 This is an application that wanna be like Paint (but with less functional opportunity) </br>
-[Link to client side source code](https://github.com/quinsberry/twitter-clone-client)</br>
+
+<!-- [Link](https://github.com/quinsberry/twitter-clone-client)</br> -->
 </br>
 
 **Technologies:** ReactJS, Websockets, Canvas, Typescript </br>
