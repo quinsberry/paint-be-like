@@ -1,0 +1,12 @@
+@import '~@theme/variables';
+
+.setting-bar {
+  top: $toolbar-height;
+  height: $toolbar-height;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}

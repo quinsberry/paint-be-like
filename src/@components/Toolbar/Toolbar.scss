@@ -1,0 +1,13 @@
+@import '~@theme/variables';
+
+.toolbar {
+  height: $toolbar-height;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  padding: 0px 10px;
+  width: 100%;
+  z-index: 99;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}

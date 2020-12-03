@@ -1,0 +1,41 @@
+.tool-btn {
+  height: 25px;
+  width: 25px;
+  border: none;
+  cursor: pointer;
+  background-size: cover;
+  margin: 0px 5px;
+
+  &.brush {
+    background: url('../../../@assets/icons/brush.png') no-repeat center center;
+  }
+
+  &.rect {
+    background: url('../../../@assets/icons/rect.png') no-repeat center center;
+  }
+
+  &.circle {
+    background: url('../../../@assets/icons/circle.png') no-repeat center center;
+  }
+
+  &.eraser {
+    background: url('../../../@assets/icons/eraser.png') no-repeat center center;
+  }
+
+  &.line {
+    background: url('../../../@assets/icons/line.png') no-repeat center center;
+  }
+
+  &.undo {
+    margin-left: auto;
+    background: url('../../../@assets/icons/undo.png') no-repeat center center;
+  }
+
+  &.redu {
+    background: url('../../../@assets/icons/redu.png') no-repeat center center;
+  }
+
+  &.save {
+    background: url('../../../@assets/icons/save.png') no-repeat center center;
+  }
+}
