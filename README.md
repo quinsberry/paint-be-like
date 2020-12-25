@@ -2,9 +2,9 @@
 
 ## Description
 
-This is an application that wanna be like Paint (but with less functional opportunity) </br>
+This is a client side of Paint Be Like application.</br>
 
-<!-- [Link](https://github.com/quinsberry/twitter-clone-client)</br> -->
+[Link to server side source code](https://github.com/quinsberry/paint-be-like-server)</br>
 </br>
 
 **Technologies:** ReactJS, Websockets, Canvas, Typescript </br>
