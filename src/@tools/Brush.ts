@@ -30,7 +30,7 @@ export class Brush extends Tool {
     }
   }
 
-  private draw(x: number, y: number) {
+  public draw(x: number, y: number) {
     this.ctx?.lineTo(x, y)
     this.ctx?.stroke()
   }

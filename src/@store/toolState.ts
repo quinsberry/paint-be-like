@@ -5,10 +5,22 @@ class ToolStateClass {
     makeAutoObservable(this)
   }
 
-  tool = null
+  tool = null as any
 
   setTool(tool: any) {
     this.tool = tool
+  }
+
+  setFillColor(color: string) {
+    this.tool.fillColor = color
+  }
+
+  setStrokeColor(color: string) {
+    this.tool.strokeColor = color
+  }
+
+  setLineWidth(width: number) {
+    this.tool.lineWidth = width
   }
 }
 
