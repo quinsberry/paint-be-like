@@ -1,3 +1,4 @@
+import { Brush, Circle, Eraser, Line, Rect } from '@tools'
 import { makeAutoObservable } from 'mobx'
 
 class ToolStateClass {
@@ -7,7 +8,7 @@ class ToolStateClass {
 
   tool = null as any
 
-  setTool(tool: any) {
+  setTool(tool: Brush | Rect | Circle | Eraser | Line) {
     this.tool = tool
   }
 

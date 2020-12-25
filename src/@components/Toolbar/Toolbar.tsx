@@ -7,17 +7,33 @@ import { ToolButton } from '@components/common'
 
 import './Toolbar.scss'
 
-export const Toolbar = () => {
+interface ToolbarProps {}
+export const Toolbar: React.FC<ToolbarProps> = (): React.ReactElement => {
+  const handleChangeColor = (e: any) => {
+    ToolState.setStrokeColor(e.target.value)
+    ToolState.setFillColor(e.target.value)
+  }
+
+  const onToolClick = {
+    brush: () => ToolState.setTool(new Brush(CanvasState.canvas!)),
+    rect: () => ToolState.setTool(new Rect(CanvasState.canvas!)),
+    circle: () => ToolState.setTool(new Circle(CanvasState.canvas!)),
+    eraser: () => ToolState.setTool(new Eraser(CanvasState.canvas!)),
+    line: () => ToolState.setTool(new Line(CanvasState.canvas!)),
+    undo: () => CanvasState.undo(),
+    redo: () => CanvasState.redo(),
+  }
+
   return (
     <div className="toolbar">
-      <ToolButton type="brush" onClick={() => ToolState.setTool(new Brush(CanvasState.canvas!))} />
-      <ToolButton type="rect" onClick={() => ToolState.setTool(new Rect(CanvasState.canvas!))} />
-      <ToolButton type="circle" onClick={() => ToolState.setTool(new Circle(CanvasState.canvas!))} />
-      <ToolButton type="eraser" onClick={() => ToolState.setTool(new Eraser(CanvasState.canvas!))} />
-      <ToolButton type="line" onClick={() => ToolState.setTool(new Line(CanvasState.canvas!))} />
-      <input type="color" />
-      <ToolButton type="undo" />
-      <ToolButton type="redu" />
+      <ToolButton type="brush" onClick={onToolClick.brush} />
+      <ToolButton type="rect" onClick={onToolClick.rect} />
+      <ToolButton type="circle" onClick={onToolClick.circle} />
+      <ToolButton type="eraser" onClick={onToolClick.eraser} />
+      <ToolButton type="line" onClick={onToolClick.line} />
+      <input type="color" onChange={handleChangeColor} />
+      <ToolButton type="undo" onClick={onToolClick.undo} />
+      <ToolButton type="redu" onClick={onToolClick.redo} />
       <ToolButton type="save" />
     </div>
   )

@@ -6,17 +6,24 @@ import { Brush } from '@tools'
 
 import './Canvas.scss'
 
-export const Canvas = observer(() => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+interface CanvasProps {}
+export const Canvas: React.FC<CanvasProps> = observer(
+  (): React.ReactElement => {
+    const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  useEffect(() => {
-    CanvasState.setCanvas(canvasRef)
-    ToolState.setTool(new Brush(canvasRef.current!))
-  }, [])
+    useEffect(() => {
+      CanvasState.setCanvas(canvasRef)
+      ToolState.setTool(new Brush(canvasRef.current!))
+    }, [])
 
-  return (
-    <div className="canvas">
-      <canvas ref={canvasRef} width={600} height={400}></canvas>
-    </div>
-  )
-})
+    const handleMouseDown = (e: any) => {
+      CanvasState.pushToUndo(canvasRef.current?.toDataURL())
+    }
+
+    return (
+      <div className="canvas">
+        <canvas onMouseDown={handleMouseDown} ref={canvasRef} width={600} height={400}></canvas>
+      </div>
+    )
+  },
+)
