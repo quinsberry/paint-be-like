@@ -1,8 +1,9 @@
+import { Socket, WSMethods } from '@core/websocket'
 import { Tool } from './Tool'
 
 export class Brush extends Tool {
-  constructor(canvas: HTMLCanvasElement) {
-    super(canvas)
+  constructor(canvas: HTMLCanvasElement, socket: Socket, id: string) {
+    super(canvas, socket, id)
     this.listen()
   }
 
@@ -26,12 +27,23 @@ export class Brush extends Tool {
 
   private mouseMoveHandler(e: any) {
     if (this.mouseDown) {
-      this.draw(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
+      // this.draw(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
+      this.socket.send({
+        method: WSMethods.draw,
+        data: {
+          id: this.id,
+          figure: {
+            type: 'brush',
+            x: e.pageX - e.target.offsetLeft,
+            y: e.pageY - e.target.offsetTop,
+          },
+        },
+      })
     }
   }
 
-  public draw(x: number, y: number) {
-    this.ctx?.lineTo(x, y)
-    this.ctx?.stroke()
+  public static draw(ctx: CanvasRenderingContext2D, x: number, y: number) {
+    ctx.lineTo(x, y)
+    ctx.stroke()
   }
 }

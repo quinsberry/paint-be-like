@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import { Socket } from '@core/websocket'
 
 class CanvasStateClass {
   constructor() {
@@ -6,22 +7,36 @@ class CanvasStateClass {
   }
 
   public canvas = null as HTMLCanvasElement | null
+  public socket: Socket | null = null
+  public sessionId: string | null = null
   private undoList = [] as any[]
   private redoList = [] as any[]
+  public username = ''
+
+  public setSocket = (socket: Socket): void => {
+    this.socket = socket
+  }
+  public setSessionId = (id: string): void => {
+    this.sessionId = id
+  }
+
+  public setUsername = (username: string): void => {
+    this.username = username
+  }
 
   public setCanvas(canvas: React.RefObject<HTMLCanvasElement>): void {
     this.canvas = canvas.current
   }
 
-  public pushToUndo(data: any) {
+  public pushToUndo(data: any): void {
     this.undoList.push(data)
   }
 
-  public pushToRedo(data: any) {
+  public pushToRedo(data: any): void {
     this.redoList.push(data)
   }
 
-  public undo() {
+  public undo(): void {
     let ctx = this.canvas?.getContext('2d')
     if (this.undoList.length < 1) return
 
@@ -35,7 +50,7 @@ class CanvasStateClass {
     }
   }
 
-  public redo() {
+  public redo(): void {
     let ctx = this.canvas?.getContext('2d')
     if (this.redoList.length < 1) return
 

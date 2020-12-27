@@ -2,6 +2,7 @@ import { Tool } from './Tool'
 
 export class Circle extends Tool {
   constructor(canvas: HTMLCanvasElement) {
+    // @ts-ignore
     super(canvas)
     this.listen()
   }

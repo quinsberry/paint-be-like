@@ -2,6 +2,7 @@ import { Tool } from './Tool'
 
 export class Line extends Tool {
   constructor(canvas: HTMLCanvasElement) {
+    // @ts-ignore
     super(canvas)
     this.listen()
     this.name = 'Line'

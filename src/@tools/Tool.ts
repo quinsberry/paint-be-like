@@ -1,12 +1,18 @@
+import { Socket } from '@core/websocket'
+
 export class Tool {
-  constructor(canvas: HTMLCanvasElement) {
+  protected canvas: HTMLCanvasElement
+  protected ctx
+  protected socket
+  protected id
+
+  constructor(canvas: HTMLCanvasElement, socket: Socket, id: string) {
     this.canvas = canvas
+    this.socket = socket
+    this.id = id
     this.ctx = canvas?.getContext('2d')
     this.destroyEvents()
   }
-
-  protected canvas: HTMLCanvasElement
-  protected ctx
 
   set fillColor(color: string) {
     if (this.ctx) this.ctx.strokeStyle = color
