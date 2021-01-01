@@ -17,6 +17,17 @@ export class Brush extends Tool {
 
   private mouseUpHandler(e: any) {
     this.mouseDown = false
+    this.socket.send({
+      method: WSMethods.draw,
+      data: {
+        id: this.id,
+        figure: {
+          type: 'finish',
+          x: e.pageX - e.target.offsetLeft,
+          y: e.pageY - e.target.offsetTop,
+        },
+      },
+    })
   }
 
   private mouseDownHandler(e: any) {
@@ -27,7 +38,6 @@ export class Brush extends Tool {
 
   private mouseMoveHandler(e: any) {
     if (this.mouseDown) {
-      // this.draw(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
       this.socket.send({
         method: WSMethods.draw,
         data: {

@@ -20,6 +20,7 @@ export interface DrawData {
 
 export enum FigureType {
   brush = 'brush',
+  rect = 'rect',
   finish = 'finish',
 }
 
